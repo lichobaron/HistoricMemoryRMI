@@ -1,7 +1,6 @@
 package hmrmi.peer;
 
 public class Peer{
-    
 
     public static void main(String[] args) {
 
@@ -16,7 +15,7 @@ public class Peer{
         servidor = new Servidor(args[0],args[1]);
         cliente = new Cliente(args[0],args[1]);
 
-        sevidor.start();
+        servidor.start();
         cliente.start();
     
     }

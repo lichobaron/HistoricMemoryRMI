@@ -1,13 +1,14 @@
 package hmrmi.remote.suscripciones;
 
-import java.rmi.server.RemoteObject;
+import java.rmi.*;
+import java.rmi.server.*;
 
-public class Tema extends Remote {
+public class Tema implements Remote {
 	private String nombre;
 	private String archivo;
 	private int linea;
 
-	Tema(String nombre, String archivo, int linea) throws RemoteObject {
+	Tema(String nombre, String archivo, int linea) throws RemoteException {
 		this.nombre = nombre;
 		this.archivo = archivo;
 		this.linea = linea;

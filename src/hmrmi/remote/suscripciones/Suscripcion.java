@@ -9,7 +9,7 @@ public class Suscripcion implements SuscripcionInterface {
 	private List<Tema> temas;
 
 	Suscripcion() throws RemoteException {
-		this.super();
+		super();
 		temas = new ArrayList<>();
 	}
 
