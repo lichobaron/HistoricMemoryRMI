@@ -36,4 +36,8 @@ public class Archivo implements ArchivoInterface {
     public String getLinea(){
         return lineas.get((int) Math.random()*8);
     }
+
+    public void addLinea(String linea) {
+        this.lineas.add(linea);
+    }
 }
