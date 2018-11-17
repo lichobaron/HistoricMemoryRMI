@@ -17,7 +17,5 @@ public class Servidor extends Thread{
         if (System.getSecurityManager() == null) {
             System.setSecurityManager(new RMISecurityManager());
         }
-
     }
-
 }
