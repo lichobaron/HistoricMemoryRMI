@@ -12,6 +12,7 @@ import java.util.Scanner;
 
 import hmrmi.remote.archivos.Archivo;
 import hmrmi.remote.archivos.ArchivoInterface;
+import hmrmi.remote.nameserver.*;
 import hmrmi.util.Util;
 
 public class Cliente extends Thread{
@@ -36,6 +37,13 @@ public class Cliente extends Thread{
 
         try {
             mRegistry = LocateRegistry.getRegistry(ip, Integer.parseInt(port));
+            NameServerInterface nsi = (NameServerInterface) mRegistry.lookup("//"+ip+":"+port+"/nameServer");
+            List<Node> nodes = nsi.getNodes();
+            for(Node node : nodes){
+                System.out.println(node.toString());
+            } 
+
+            /*mRegistry = LocateRegistry.getRegistry(ip, Integer.parseInt(port));
             Thread.sleep(5000);
             System.out.println("------------------Cliente ejecutandose------------------");
 
@@ -56,7 +64,7 @@ public class Cliente extends Thread{
                             //System.out.println("-----< "+testUrl);
                             ArchivoInterface arch = (ArchivoInterface) mRegistry.lookup(testUrl);
                             String randomLine = arch.getLinea();
-                            compilado.addLinea(randomLine/*descriptor.getNombre().concat(arch.getLinea())*/);
+                            compilado.addLinea(randomLine/*descriptor.getNombre().concat(arch.getLinea()));
                             System.out.println("Se ha obtenido la linea " + randomLine+" de "+ testUrl);
                             success = true;
                         } catch (Exception e) {
@@ -65,11 +73,11 @@ public class Cliente extends Thread{
                                 compilado.addLinea("No hay archivos disponibles de "+ linea);
                             }
                         }
-                    }
+                    }   
                 }
                 Util.writeReCapitulative(compilado);
                 System.out.println("------------------Se  ha escrito compilado "+ descriptor.getNombre()+"------------------");
-            }
+            }*/
         } catch (Exception e) {
             System.out.println(e);
         }

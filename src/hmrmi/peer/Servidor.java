@@ -31,14 +31,13 @@ public class Servidor extends Thread{
         /*if (System.getSecurityManager() == null) {
             System.setSecurityManager(new SecurityManager());
         }*/
-        final File folder = new File("../res/fuente/");
+        /*final File folder = new File("../res/fuente/");
         archivos = Util.listFilesForFolder(folder, false);
 
         System.out.println("------------------Servidor ejecutandose------------------");
 
         serverID = generateString();
               
-
         try {
             mRegistry = LocateRegistry.getRegistry(ip, Integer.parseInt(port));
             Binder binder = new Binder(ip, port);
@@ -54,7 +53,7 @@ public class Servidor extends Thread{
                 System.out.println(e1);
             }
             
-        }
+        }*/
     }
 
     private String generateString() {
