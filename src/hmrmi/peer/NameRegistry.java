@@ -25,7 +25,8 @@ public class NameRegistry{
             Registry mRegistry = LocateRegistry.getRegistry(ip, Integer.parseInt(port));
             NameServer nameServer = new NameServer();
             nameServer.addNode(new Node(ip, Integer.parseInt(port)));
-            mRegistry.bind(ip +":" + port + "/nameServer", nameServer);                
+            System.out.println("rmi://"+ip +":" + port + "/nameServer");
+            mRegistry.bind("rmi://"+ip +":" + port + "/nameServer", nameServer);                
         } catch (Exception e) {
             System.out.println(e);
         }    

@@ -37,11 +37,16 @@ public class Cliente extends Thread{
 
         try {
             mRegistry = LocateRegistry.getRegistry(ip, Integer.parseInt(port));
-            NameServerInterface nsi = (NameServerInterface) mRegistry.lookup("//"+ip+":"+port+"/nameServer");
+            String[] urls = mRegistry.list();
+            for (String url : urls) {
+                System.out.println(url);
+            }
+            NameServerInterface nsi = (NameServerInterface) mRegistry.lookup("rmi://"+ip+":"+port+"/nameServer");
             List<Node> nodes = nsi.getNodes();
             for(Node node : nodes){
                 System.out.println(node.toString());
-            } 
+            }
+            
 
             /*mRegistry = LocateRegistry.getRegistry(ip, Integer.parseInt(port));
             Thread.sleep(5000);

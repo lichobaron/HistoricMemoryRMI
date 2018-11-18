@@ -4,4 +4,4 @@ rmiregistry 54567 &
 
 cd bin
 java -Djava.security.policy=../src/hmrmi/peer/servidor.permisos  hmrmi.peer.Peer 127.0.0.1 54567
-java -Djava.security.policy=../src/hmrmi/peer/servidor.permisos  hmrmi.peer.NameRegistry 127.0.0.1 54567
+java -Djava.security.policy=../src/hmrmi/peer/servidor.permisos  hmrmi.peer.NameRegistry 192.168.0.12 6787
