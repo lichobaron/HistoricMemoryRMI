@@ -11,6 +11,7 @@ import java.util.Scanner;
 import java.util.UUID;
 
 import hmrmi.remote.archivos.*;
+import hmrmi.remote.binder.*;
 import hmrmi.util.*;
 
 public class Servidor extends Thread{
@@ -27,22 +28,27 @@ public class Servidor extends Thread{
     }
 
     public void run(){
-        if (System.getSecurityManager() == null) {
-            System.setSecurityManager(new RMISecurityManager());
-
-            final File folder = new File("../res/fuente/");
-            archivos = Util.listFilesForFolder(folder, false);
-        }
+        /*if (System.getSecurityManager() == null) {
+            System.setSecurityManager(new SecurityManager());
+        }*/
+        final File folder = new File("../res/fuente/");
+        archivos = Util.listFilesForFolder(folder, false);
 
         System.out.println("------------------Servidor ejecutandose------------------");
 
         serverID = generateString();
+              
 
         try {
             mRegistry = LocateRegistry.getRegistry(ip, Integer.parseInt(port));
+            Binder binder = new Binder(ip, port);
+            mRegistry.bind("rmi://"+ ip +":" + port + "/binder", binder);  
+
+            
+            //System.out.println(mRegistry);
             registerFiles();
         } catch (Exception e) {
-            //e.printStackTrace();
+            e.printStackTrace();
             System.out.println(e);
         }
     }
@@ -52,8 +58,10 @@ public class Servidor extends Thread{
     }
 
     private void registerFiles() throws Exception{
+        BinderInterface binderInterface = (BinderInterface) mRegistry.lookup("//"+ ip +":" + port + "/binder");
         for (Archivo arch : archivos) {
-            mRegistry.rebind("rmi://"+ ip +":" + port + "/" +serverID + "/" +arch.getNombre(), arch);
+            //mRegistry.rebind("rmi://"+ ip +":" + port + "/" +serverID + "/" +arch.getNombre(), arch);
+            //binderInterface.bind(arch, serverID);
             System.out.println("Se ha compartido rmi://"+ ip +":" + port + "/" +serverID + "/" +arch.getNombre());
         }
     }

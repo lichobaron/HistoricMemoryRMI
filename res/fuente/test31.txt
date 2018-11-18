@@ -1,8 +1,8 @@
+prueba20-6
 prueba20-1
-prueba20-5
-prueba24-6
-prueba27-7
-prueba18-4
-prueba36-2
-prueba31-1
-prueba7-5
+prueba24-2
+prueba27-1
+No hay archivos disponibles de prueba18.txt
+prueba36-3
+prueba31-4
+No hay archivos disponibles de prueba7.txt

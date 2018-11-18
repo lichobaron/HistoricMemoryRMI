@@ -27,9 +27,9 @@ public class Cliente extends Thread{
 
     public void run(){
 
-        if (System.getSecurityManager() == null) {
-            System.setSecurityManager(new RMISecurityManager());
-        }
+        /*if (System.getSecurityManager() == null) {
+            System.setSecurityManager(new SecurityManager());
+        }*/
 
         File folder = new File("../res/descriptores");
         descriptores = Util.listFilesForFolder(folder,true);
@@ -43,7 +43,7 @@ public class Cliente extends Thread{
             List<String> urlsList = Arrays.asList(urls);
 
             for (Archivo descriptor : descriptores) {
-                //System.out.println("---* "+descriptor.getNombre());
+                System.out.println("---* "+descriptor.getNombre());
                 Archivo compilado = new Archivo(descriptor.getNombre());
                 for (String linea : descriptor.getLineas()) {
                     //System.out.println("----+"+linea);

@@ -1,8 +1,8 @@
-prueba23-6
-prueba28-3
-prueba7-5
-prueba12-5
-prueba17-2
-prueba7-2
-prueba13-3
-prueba2-5
+prueba23-1
+prueba28-2
+No hay archivos disponibles de prueba7.txt
+No hay archivos disponibles de prueba12.txt
+No hay archivos disponibles de prueba17.txt
+No hay archivos disponibles de prueba7.txt
+No hay archivos disponibles de prueba13.txt
+No hay archivos disponibles de prueba2.txt
