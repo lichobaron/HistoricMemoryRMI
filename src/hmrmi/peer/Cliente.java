@@ -44,7 +44,7 @@ public class Cliente extends Thread{
             NameServerInterface nsi = (NameServerInterface) mRegistry.lookup("rmi://"+ip+":"+port+"/nameServer");
             List<Node> nodes = nsi.getNodes();
             for(Node node : nodes){
-                System.out.println(node.toString());
+                System.out.println(node.infoNode());
             }
             
 

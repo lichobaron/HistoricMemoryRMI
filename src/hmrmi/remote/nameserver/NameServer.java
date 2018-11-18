@@ -2,7 +2,6 @@ package hmrmi.remote.nameserver;
 
 import java.rmi.*;
 import java.rmi.server.*;
-import java.rmi.registry.*;
 
 import java.util.List;
 import java.util.ArrayList;
