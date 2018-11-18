@@ -31,38 +31,44 @@ public class Cliente extends Thread{
             System.setSecurityManager(new RMISecurityManager());
         }
 
-        File folder = new File("../sources/descriptores");
+        File folder = new File("../res/descriptores");
         descriptores = Util.listFilesForFolder(folder,true);
 
         try {
             mRegistry = LocateRegistry.getRegistry(ip, Integer.parseInt(port));
-            Thread.sleep(2000);
+            Thread.sleep(5000);
+            System.out.println("------------------Cliente ejecutandose------------------");
 
             String[] urls = mRegistry.list();
             List<String> urlsList = Arrays.asList(urls);
 
             for (Archivo descriptor : descriptores) {
-                System.out.println("---* "+descriptor.getNombre());
+                //System.out.println("---* "+descriptor.getNombre());
+                Archivo compilado = new Archivo(descriptor.getNombre());
                 for (String linea : descriptor.getLineas()) {
                     //System.out.println("----+"+linea);
                     List<String> filterUrls = matchFiles(urlsList, linea);
                     //System.out.println("Url Filtrado: " + filterUrls.isEmpty());
                     boolean success = false;
                     while(!success){
-                        //System.out.println("-----< "+testUrl);
                         try {
                             String testUrl = filterUrls.get((int) (Math.random() * filterUrls.size()));
+                            //System.out.println("-----< "+testUrl);
                             ArchivoInterface arch = (ArchivoInterface) mRegistry.lookup(testUrl);
-                            System.out.println("-----> Linea: " + arch.getLinea());
+                            String randomLine = arch.getLinea();
+                            compilado.addLinea(randomLine/*descriptor.getNombre().concat(arch.getLinea())*/);
+                            System.out.println("Se ha obtenido la linea " + randomLine+" de "+ testUrl);
                             success = true;
                         } catch (Exception e) {
                             if(filterUrls.size() <= 1){
                                 success = true;
-                                System.out.println("No hay archivos disponibles de "+ linea);
+                                compilado.addLinea("No hay archivos disponibles de "+ linea);
                             }
                         }
                     }
                 }
+                Util.writeReCapitulative(compilado);
+                System.out.println("------------------Se  ha escrito compilado "+ descriptor.getNombre()+"------------------");
             }
         } catch (Exception e) {
             System.out.println(e);

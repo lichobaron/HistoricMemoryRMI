@@ -1,6 +1,8 @@
 package hmrmi.util;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -14,10 +16,12 @@ public abstract class Util {
         Archivo archivo = null;
 
         try {
-            archivo = new Archivo(fileEntry.getName());
             inputFile = new Scanner(fileEntry);
             if (esDescriptor) {
-                inputFile.nextLine();
+                linea = inputFile.nextLine();
+                archivo = new Archivo(linea);
+            } else {
+                archivo = new Archivo(fileEntry.getName());
             }
             while (inputFile.hasNextLine()) {
                 linea = inputFile.nextLine();
@@ -47,12 +51,12 @@ public abstract class Util {
     }
 
     public static void writeReCapitulative(Archivo recapitulado) {
-        File file = new File("/sources/fuente/" + recapitulado.getNombre());
+        File file = new File("../res/fuente/" + recapitulado.getNombre());
         FileWriter fr = null;
         try {
             fr = new FileWriter(file);
-            for ( String data : recapitulado.getLineas )
-                fr.write(data);
+            for ( String data : recapitulado.getLineas() )
+                fr.write(data + "\n");
         } catch (IOException e) {
             e.printStackTrace();
         }finally{

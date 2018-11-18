@@ -30,11 +30,11 @@ public class Servidor extends Thread{
         if (System.getSecurityManager() == null) {
             System.setSecurityManager(new RMISecurityManager());
 
-            final File folder = new File("../sources/fuente/");
+            final File folder = new File("../res/fuente/");
             archivos = Util.listFilesForFolder(folder, false);
         }
 
-        System.out.println("Ejecutando servidor");
+        System.out.println("------------------Servidor ejecutandose------------------");
 
         serverID = generateString();
 
@@ -54,6 +54,7 @@ public class Servidor extends Thread{
     private void registerFiles() throws Exception{
         for (Archivo arch : archivos) {
             mRegistry.rebind("rmi://"+ ip +":" + port + "/" +serverID + "/" +arch.getNombre(), arch);
+            System.out.println("Se ha compartido rmi://"+ ip +":" + port + "/" +serverID + "/" +arch.getNombre());
         }
     }
 }
