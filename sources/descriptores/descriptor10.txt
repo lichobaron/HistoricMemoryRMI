@@ -1,9 +1,0 @@
-test10.txt
-prueba7-1
-prueba34-8
-prueba30-8
-prueba18-2
-prueba7-2
-prueba22-2
-prueba7-4
-prueba36-4

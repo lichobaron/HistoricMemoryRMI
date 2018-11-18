@@ -1,9 +1,0 @@
-test24.txt
-prueba18-6
-prueba32-5
-prueba32-6
-prueba30-7
-prueba36-5
-prueba12-7
-prueba30-5
-prueba22-7

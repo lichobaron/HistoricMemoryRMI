@@ -1,9 +1,0 @@
-test41.txt
-prueba4-3
-prueba16-5
-prueba33-5
-prueba32-2
-prueba9-7
-prueba28-1
-prueba14-8
-prueba24-4

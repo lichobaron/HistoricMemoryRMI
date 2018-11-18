@@ -1,9 +1,0 @@
-test13.txt
-prueba28-3
-prueba14-3
-prueba20-4
-prueba28-7
-prueba33-6
-prueba12-5
-prueba13-2
-prueba34-3
