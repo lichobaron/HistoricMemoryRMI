@@ -31,7 +31,7 @@ public class Servidor extends Thread{
             System.setSecurityManager(new RMISecurityManager());
 
             final File folder = new File("../sources/fuente/");
-            archivos = Util.listFilesForFolder(folder);
+            archivos = Util.listFilesForFolder(folder, false);
         }
 
         System.out.println("Ejecutando servidor");
