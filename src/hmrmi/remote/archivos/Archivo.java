@@ -4,7 +4,6 @@ import java.rmi.*;
 import java.rmi.server.*;
 
 import java.util.List;
-import java.util.Random;
 import java.util.ArrayList;
 
 public class Archivo extends UnicastRemoteObject implements ArchivoInterface {
@@ -33,6 +32,10 @@ public class Archivo extends UnicastRemoteObject implements ArchivoInterface {
     }
 
     public String getLinea(){
-        return lineas.get((int) Math.random()*8);
+        return lineas.get((int) (Math.random() * 8));
+    }
+
+    public void addLinea(String linea) {
+        this.lineas.add(linea);
     }
 }
