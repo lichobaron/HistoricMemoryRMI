@@ -32,12 +32,7 @@ public class Cliente extends Thread{
         }
 
         File folder = new File("../sources/descriptores");
-        descriptores = Util.listFilesForFolder(folder);
-
-        for (Archivo descriptor : descriptores) {
-            System.out.println(descriptor.getNombre());
-            System.out.println(descriptor.getLinea());
-        }
+        descriptores = Util.listFilesForFolder(folder,true);
 
         try {
             mRegistry = LocateRegistry.getRegistry(ip, Integer.parseInt(port));
@@ -47,12 +42,16 @@ public class Cliente extends Thread{
             List<String> urlsList = Arrays.asList(urls);
 
             for (Archivo descriptor : descriptores) {
+                System.out.println("---* "+descriptor.getNombre());
                 for (String linea : descriptor.getLineas()) {
+                    //System.out.println("----+"+linea);
                     List<String> filterUrls = matchFiles(urlsList, linea);
-                    boolean success = true;
+                    //System.out.println("Url Filtrado: " + filterUrls.isEmpty());
+                    boolean success = false;
                     while(!success){
-                        String testUrl = filterUrls.get((int) (Math.random() * filterUrls.size()));
+                        //System.out.println("-----< "+testUrl);
                         try {
+                            String testUrl = filterUrls.get((int) (Math.random() * filterUrls.size()));
                             ArchivoInterface arch = (ArchivoInterface) mRegistry.lookup(testUrl);
                             System.out.println("-----> Linea: " + arch.getLinea());
                             success = true;
@@ -63,15 +62,6 @@ public class Cliente extends Thread{
                             }
                         }
                     }
-                }
-            }
-            
-            for(String url : filterUrls){
-                try {
-                    ArchivoInterface arch = (ArchivoInterface) mRegistry.lookup(url);
-                    System.out.println("-----> Linea: " + arch.getLinea());
-                } catch (Exception e) {
-                    mRegistry.unbind(url);
                 }
             }
         } catch (Exception e) {
