@@ -45,4 +45,22 @@ public abstract class Util {
 
         return archivos;
     }
+
+    public static void writeReCapitulative(Archivo recapitulado) {
+        File file = new File("/sources/fuente/" + recapitulado.getNombre());
+        FileWriter fr = null;
+        try {
+            fr = new FileWriter(file);
+            for ( String data : recapitulado.getLineas )
+                fr.write(data);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally{
+            try {
+                fr.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
