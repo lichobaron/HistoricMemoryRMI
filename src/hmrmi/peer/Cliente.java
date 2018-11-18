@@ -10,6 +10,7 @@ import java.util.Scanner;
 import hmrmi.remote.archivos.Archivo;
 import hmrmi.util.Util;
 
+
 public class Cliente extends Thread{
     private String ip;
     private String port;
@@ -22,13 +23,18 @@ public class Cliente extends Thread{
     public void run(){
         if (System.getSecurityManager() == null) {
             System.setSecurityManager(new RMISecurityManager());
+        }
+    }
 
-            final File folder = new File("../sources/descriptores/");
-            List<Archivo> archivos = Util.listFilesForFolder(folder);
-            for( Archivo archivo : archivos) {
-                System.out.println(archivo.getNombre());
-                System.out.println(archivo.getLinea());
+    private List<String> matchFiles (List<String> urls, String file) {
+        List<String> matches = new ArrayList<String>();
+        for (String url : urls) {
+            String[] div = url.split("/");
+            if (div[div.length - 1].equals(file)){
+                matches.add(url);
+                System.out.println(div[div.length - 1]);
             }
         }
+        return matches;
     }
 }
