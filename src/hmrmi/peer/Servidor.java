@@ -42,9 +42,7 @@ public class Servidor extends Thread{
         try {
             mRegistry = LocateRegistry.getRegistry(ip, Integer.parseInt(port));
             Binder binder = new Binder(ip, port);
-            mRegistry.bind("rmi://"+ ip +":" + port + "/binder", binder);  
-
-            
+            mRegistry.rebind(ip +":" + port + "/binder", binder);  
             //System.out.println(mRegistry);
             registerFiles();
         } catch (Exception e) {
@@ -58,10 +56,10 @@ public class Servidor extends Thread{
     }
 
     private void registerFiles() throws Exception{
-        BinderInterface binderInterface = (BinderInterface) mRegistry.lookup("//"+ ip +":" + port + "/binder");
+        BinderInterface binderInterface = (BinderInterface) this.mRegistry.lookup(ip +":" + port + "/binder");
         for (Archivo arch : archivos) {
             //mRegistry.rebind("rmi://"+ ip +":" + port + "/" +serverID + "/" +arch.getNombre(), arch);
-            //binderInterface.bind(arch, serverID);
+            binderInterface.bind(arch, this.serverID);
             System.out.println("Se ha compartido rmi://"+ ip +":" + port + "/" +serverID + "/" +arch.getNombre());
         }
     }

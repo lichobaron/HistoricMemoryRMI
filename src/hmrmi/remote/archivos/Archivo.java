@@ -15,6 +15,10 @@ public class Archivo extends UnicastRemoteObject implements ArchivoInterface {
         this.lineas = new ArrayList<>();
     }
 
+    public Archivo hello(){
+        return this;
+    }
+
     public String getNombre() {
         return this.nombre;
     }
