@@ -1,9 +1,9 @@
 test1.txt
-prueba1.txt
-prueba1.txt
-prueba2.txt
-prueba3.txt
-prueba1.txt
-prueba4.txt
-prueba2.txt
-prueba5.txt
+prueba17-8
+prueba7-3
+prueba13-4
+prueba10-5
+prueba7-8
+prueba19-4
+prueba29-1
+prueba10-1

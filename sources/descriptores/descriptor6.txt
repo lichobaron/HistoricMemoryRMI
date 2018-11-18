@@ -1,0 +1,9 @@
+test6.txt
+prueba1-1
+prueba28-4
+prueba32-7
+prueba8-5
+prueba30-7
+prueba6-3
+prueba30-5
+prueba13-1

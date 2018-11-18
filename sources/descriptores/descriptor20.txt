@@ -1,0 +1,9 @@
+test20.txt
+prueba25-2
+prueba5-4
+prueba15-8
+prueba23-1
+prueba35-2
+prueba26-5
+prueba35-4
+prueba15-5
