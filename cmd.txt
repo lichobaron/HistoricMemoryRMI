@@ -1,5 +1,5 @@
-javac -d bin/ src/hmrmi/peer/*.java src/hmrmi/remote/archivos/*.java src/hmrmi/remote/suscripciones/*.java
-rmiregistry 54322 &
+javac -d bin/ src/hmrmi/peer/*.java src/hmrmi/remote/archivos/*.java
+rmiregistry 54567 &
 
 cd bin
-java -Djava.security.policy=../src/hmrmi/peer/servidor.permisos  hmrmi.peer.Peer 127.0.0.1 54322
+java -Djava.security.policy=../src/hmrmi/peer/servidor.permisos  hmrmi.peer.Peer 127.0.0.1 54567

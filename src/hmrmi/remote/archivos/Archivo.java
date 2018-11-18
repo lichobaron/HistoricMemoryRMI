@@ -7,14 +7,13 @@ import java.util.List;
 import java.util.Random;
 import java.util.ArrayList;
 
-public class Archivo implements ArchivoInterface {
+public class Archivo extends UnicastRemoteObject implements ArchivoInterface {
     private String nombre;
     private List<String> lineas;
 
     public Archivo(String nombre) throws RemoteException {
         this.nombre = nombre;
         this.lineas = new ArrayList<>();
-
     }
 
     public String getNombre() {
