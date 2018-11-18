@@ -46,8 +46,14 @@ public class Servidor extends Thread{
             //System.out.println(mRegistry);
             registerFiles();
         } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println(e);
+            try {
+                registerFiles();    
+            } catch (Exception e1) {
+                System.out.println("Esta aqui e1");
+                e1.printStackTrace();
+                System.out.println(e1);
+            }
+            
         }
     }
 
@@ -56,7 +62,9 @@ public class Servidor extends Thread{
     }
 
     private void registerFiles() throws Exception{
-        BinderInterface binderInterface = (BinderInterface) this.mRegistry.lookup(ip +":" + port + "/binder");
+        System.out.println("Esta aqui");
+        String[] prueba = mRegistry.list();
+        BinderInterface binderInterface = (BinderInterface) this.mRegistry.lookup( ip +":" + port + "/binder");
         for (Archivo arch : archivos) {
             //mRegistry.rebind("rmi://"+ ip +":" + port + "/" +serverID + "/" +arch.getNombre(), arch);
             binderInterface.bind(arch, this.serverID);

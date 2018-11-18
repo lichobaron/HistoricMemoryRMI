@@ -2,7 +2,7 @@ No hay archivos disponibles de prueba16.txt
 prueba27-2
 No hay archivos disponibles de prueba18.txt
 No hay archivos disponibles de prueba17.txt
-prueba35-7
-prueba32-8
-prueba28-4
+prueba35-5
+prueba32-1
+prueba28-5
 No hay archivos disponibles de prueba2.txt

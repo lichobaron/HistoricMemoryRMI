@@ -1,8 +1,8 @@
-prueba30-3
-prueba26-6
-prueba32-3
-prueba29-1
-prueba36-3
+prueba30-5
+prueba26-2
+prueba32-7
+prueba29-2
+prueba36-1
 No hay archivos disponibles de prueba7.txt
-prueba28-4
-prueba29-1
+prueba28-8
+prueba29-2
