@@ -3,5 +3,5 @@ javac -d bin/ src/hmrmi/peer/*.java src/hmrmi/remote/archivos/*.java src/hmrmi/r
 rmiregistry 54567 &
 
 cd bin
-java -Djava.security.policy=../src/hmrmi/peer/servidor.permisos  hmrmi.peer.Peer 127.0.0.1 54567
+java -Djava.security.policy=../src/hmrmi/peer/servidor.permisos  hmrmi.peer.Peer 192.168.43.12 6978 192.168.43.154 5568
 java -Djava.security.policy=../src/hmrmi/peer/servidor.permisos  hmrmi.peer.NameRegistry 192.168.0.12 6787

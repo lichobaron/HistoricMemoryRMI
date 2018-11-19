@@ -49,6 +49,7 @@ public class Servidor extends Thread{
             registerFiles();
             node.setTemas(temas);
             nsi.addNode(node);
+            System.out.println("Servidor " +mIp+":"+mPort+" registrado");
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println(e);            
