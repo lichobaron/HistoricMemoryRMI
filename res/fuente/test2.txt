@@ -1,8 +1,8 @@
-No hay archivos disponibles de prueba17.txt
-No hay archivos disponibles de prueba4.txt
-prueba29-6
-prueba20-5
-No hay archivos disponibles de prueba3.txt
-No hay archivos disponibles de prueba3.txt
-No hay archivos disponibles de prueba3.txt
-prueba19-6
+prueba17-1
+prueba4-5
+prueba29-8
+prueba20-6
+prueba3-5
+prueba3-8
+prueba3-5
+prueba19-7

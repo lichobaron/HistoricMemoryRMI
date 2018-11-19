@@ -11,63 +11,55 @@ import java.util.Scanner;
 import java.util.UUID;
 
 import hmrmi.remote.archivos.*;
-import hmrmi.remote.binder.*;
+import hmrmi.remote.nameserver.*;
 import hmrmi.util.*;
 
 public class Servidor extends Thread{
 
     private String ip;
     private String port;
-    private String serverID;
+    private String mIp;
+    private String mPort;
     private Registry mRegistry;
+    private Registry serverRegistry;
     private List<Archivo> archivos;
+    private List<String> temas;
 
-    Servidor(String ip, String port){
+    Servidor(String ip, String port, String mIp, String mPort){
         this.ip = ip;
         this.port = port;
+        this.mIp = mIp;
+        this.mPort = mPort;
     }
 
     public void run(){
-        /*if (System.getSecurityManager() == null) {
+        if (System.getSecurityManager() == null) {
             System.setSecurityManager(new SecurityManager());
-        }*/
-        /*final File folder = new File("../res/fuente/");
+        }
+        final File folder = new File("../res/fuente/");
         archivos = Util.listFilesForFolder(folder, false);
-
-        System.out.println("------------------Servidor ejecutandose------------------");
-
-        serverID = generateString();
-              
+        System.out.println("------------------Lectura de fuentes terminada------------------\n");
+        System.out.println("------------------Servidor ejecutandose------------------");            
         try {
-            mRegistry = LocateRegistry.getRegistry(ip, Integer.parseInt(port));
-            Binder binder = new Binder(ip, port);
-            mRegistry.rebind(ip +":" + port + "/binder", binder);  
-            //System.out.println(mRegistry);
+            serverRegistry = LocateRegistry.getRegistry(ip, Integer.parseInt(port));
+            NameServerInterface nsi = (NameServerInterface) serverRegistry.lookup("rmi://"+ip+":"+port+"/nameServer");
+            Node node = new Node(mIp, Integer.parseInt(mPort));
+            temas = new ArrayList<>();
+            mRegistry = LocateRegistry.getRegistry(mIp, Integer.parseInt(mPort));
             registerFiles();
+            node.setTemas(temas);
+            nsi.addNode(node);
         } catch (Exception e) {
-            try {
-                registerFiles();    
-            } catch (Exception e1) {
-                System.out.println("Esta aqui e1");
-                e1.printStackTrace();
-                System.out.println(e1);
-            }
-            
-        }*/
-    }
-
-    private String generateString() {
-        return UUID.randomUUID().toString();
+            e.printStackTrace();
+            System.out.println(e);            
+        }
     }
 
     private void registerFiles() throws Exception{
-        System.out.println("Esta aqui");
-        String[] prueba = mRegistry.list();
-        BinderInterface binderInterface = (BinderInterface) this.mRegistry.lookup( ip +":" + port + "/binder");
         for (Archivo arch : archivos) {
-            //mRegistry.rebind("rmi://"+ ip +":" + port + "/" +serverID + "/" +arch.getNombre(), arch);
-            binderInterface.bind(arch, this.serverID);
-            System.out.println("Se ha compartido rmi://"+ ip +":" + port + "/" +serverID + "/" +arch.getNombre());
+            mRegistry.rebind("rmi://"+ mIp +":" + mPort + "/files/" +arch.getNombre(), arch);
+            System.out.println(" - Se ha compartido rmi://"+ mIp +":" + mPort + "/files/" +arch.getNombre());
+            temas.add(arch.getNombre());
         }
     }
 }

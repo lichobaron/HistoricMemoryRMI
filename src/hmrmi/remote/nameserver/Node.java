@@ -1,16 +1,19 @@
 package hmrmi.remote.nameserver;
 
-import java.rmi.*;
-import java.rmi.server.*;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Node extends UnicastRemoteObject implements NodeInterface{
+public class Node implements  Serializable{
 
     private String ip;
     private int port;
+    private List<String> temas;
 
-    public Node(String ip, int port) throws RemoteException{
+    public Node(String ip, int port) {
         this.ip = ip;
         this.port = port;
+        this.temas = new ArrayList<>();
     }
     
     public String getIp() {
@@ -29,7 +32,16 @@ public class Node extends UnicastRemoteObject implements NodeInterface{
         this.port = port;
     }
 
-    public String infoNode() {
+    public List<String> getTemas() {
+        return this.temas;
+    }
+
+    public void setTemas(List<String> temas) {
+        this.temas = temas;
+    }
+
+    @Override
+    public String toString() {
         return "{" +
             " ip='" + getIp() + "'" +
             ", port='" + getPort() + "'" +

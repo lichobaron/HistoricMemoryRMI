@@ -8,4 +8,5 @@ import java.util.List;
 public interface NameServerInterface extends Remote {
     public List<Node> getNodes() throws RemoteException;
     public void addNode(Node node) throws RemoteException;
+    public boolean isReady() throws RemoteException;
 }
