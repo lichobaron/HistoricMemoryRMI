@@ -7,7 +7,7 @@ for x in range (0,60):
         elif y == 8:
             f.write('prueba'+str(randint(1,36))+'.txt')
         elif y % 2 == 0:
-            f.write('test'+str(randint(1,36))+'.txt')
+            f.write('test'+str(randint(1,36))+'.txt'+'\n')
         else:
             f.write('prueba'+str(randint(1,36))+'.txt'+'\n')
     f.close
