@@ -33,9 +33,9 @@ public class Servidor extends Thread{
     }
 
     public void run(){
-        if (System.getSecurityManager() == null) {
+        /*if (System.getSecurityManager() == null) {
             System.setSecurityManager(new SecurityManager());
-        }
+        }*/
         final File folder = new File("../res/fuente/");
         archivos = Util.listFilesForFolder(folder, false);
         System.out.println("------------------Lectura de fuentes terminada------------------\n");

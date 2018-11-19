@@ -17,9 +17,9 @@ public class NameRegistry{
             return;
         }
         try {
-            if (System.getSecurityManager() == null) {
+            /*if (System.getSecurityManager() == null) {
                 System.setSecurityManager(new SecurityManager());
-            }
+            }*/
             System.out.println("------------------Registry ejecutandose------------------");
             String ip = args[0];
             String port = args[1];

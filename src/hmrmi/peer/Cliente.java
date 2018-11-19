@@ -32,9 +32,9 @@ public class Cliente extends Thread{
 
     public void run(){
 
-        if (System.getSecurityManager() == null) {
+        /*if (System.getSecurityManager() == null) {
             System.setSecurityManager(new SecurityManager());
-        }
+        }*/
 
         File folder = new File("../res/descriptores");
         descriptores = Util.listFilesForFolder(folder,true);

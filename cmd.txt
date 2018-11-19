@@ -1,3 +1,11 @@
+configuración:
+
+- desactivar firewall de las máquinas: 
+	sudo ufw disable
+
+- cambiar la ip del archivo /test/hosts:
+	sudo nano /etc/hosts
+
 compilación:
 
 javac -d bin/ src/hmrmi/peer/*.java src/hmrmi/remote/archivos/*.java src/hmrmi/remote/nameserver/*.java src/hmrmi/util/*.java
@@ -6,8 +14,8 @@ ejecución:
 
 cd bin
 - ejecutar name server: la ip del host, el puerto y el numero de clientes (usar 2)
-java -Djava.security.policy=../src/hmrmi/peer/servidor.permisos  hmrmi.peer.NameRegistry 192.168.43.12 6978 2
+java -Djava.security.policy=../src/hmrmi/peer/servidor.permisos  hmrmi.peer.NameRegistry 192.168.0.10 6978 2
 
 - ejecutar clientes: notar que la primera pareja "ip - puerto" es la del server name
-java -Djava.security.policy=../src/hmrmi/peer/servidor.permisos  hmrmi.peer.Peer 192.168.43.12 6978 192.168.0.12 5566
+java -Djava.security.policy=../src/hmrmi/peer/servidor.permisos  hmrmi.peer.Peer 192.168.0.10 6978 192.168.0.12 5566
 java -Djava.security.policy=../src/hmrmi/peer/servidor.permisos  hmrmi.peer.Peer 192.168.43.12 6978 192.168.43.154 5568
